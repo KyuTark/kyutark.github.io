@@ -377,6 +377,11 @@ h2 {
     .about-motto {
       font-size: 0.95em;   /* 기본 1.15em에서 살짝 줄임 */
       line-height: 1.4;    /* 줄간격도 모바일에 맞게 살짝 타이트하게 */
+      text-align: center;
+      padding: 0 10px;
+      word-break: keep-all;
+      margin-top: 0.5em;    /* 위쪽 구분선과의 거리를 좁힘 */
+      margin-bottom: 2.5em; /* 아래쪽 소제목과의 거리를 넉넉하게 확보 */
     }
   
     h2 {
