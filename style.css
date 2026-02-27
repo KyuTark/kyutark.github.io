@@ -268,84 +268,75 @@ h2 {
   margin-top: 40px;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
+
+/* =========================================
+   8. 모바일 반응형 (Mobile)
+   ========================================= */
 /* =========================================
    8. 모바일 반응형 (Mobile)
    ========================================= */
    @media (max-width: 768px) {
-    .layout {
-      gap: 16px;
-      padding: 16px;
-      padding-top: 60px;
-    }
-  
-    /* 사이드바 배치 변경: 상단 중앙(이름) + 하단 좌우(사진/연락처) */
+
     .sidebar {
       flex: 1 1 100%;
-      display: grid;
-      /* 영역 정의: info가 상단 전체, pic과 links가 하단 좌우 차지 */
-      grid-template-areas: 
-        "info info"
-        "pic links";
-      grid-template-columns: 120px 1fr; /* 사진 120px, 나머지는 연락처 */
-      gap: 16px;
-      align-items: center;
-      border: none;
       padding-right: 0;
-      margin-bottom: 20px;
+      border: none;
+  
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      grid-template-areas:
+        "title title"
+        "avatar info";
+      column-gap: 16px;
+      row-gap: 12px;
+      align-items: start;
     }
   
-    /* 상단 이름 및 한국어 좌우명 영역 */
-    .sidebar-info {
-      grid-area: info;
-      text-align: center; /* 이름과 좌우명을 중앙으로 */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border-color); /* 구분선 (선택사항) */
-    }
-  
-    .sidebar-info h1 {
-      margin: 0 0 4px;
-      font-size: 1.8em;
-    }
-  
-    .role {
-      margin: 0;
-      font-size: 0.85em;
-    }
-  
-    /* 하단 왼쪽: 사진 */
-    .avatar {
-      grid-area: pic;
-      width: 120px;
-      height: auto;
-      margin: 0 auto;
-    }
-  
-    /* 하단 오른쪽: 연락처 정보 */
-    .contact-links {
-      grid-area: links;
-      padding-left: 0;
-      margin: 0;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-  
-    .contact-links li {
-      margin-bottom: 0;
-      font-size: 0.9em;
-    }
-  
-    /* 콘텐츠 및 공통 요소 */
     .theme-toggle {
+      position: fixed;
       top: 15px;
       right: 15px;
       width: 40px;
       height: 40px;
       font-size: 1.1rem;
+      z-index: 10;
+    }
+  
+    /* 이름 + 한국어 motto를 하나의 title 블록으로 */
+    .sidebar-info {
+      grid-area: info;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .sidebar-info h1,
+    .sidebar-info .role {
+      grid-area: title;
+      text-align: center;
+    }
+  
+    .sidebar-info h1 {
+      margin: 0 0 6px;
+    }
+  
+    .sidebar-info .role {
+      margin: 0 0 10px;
+    }
+  
+    .avatar {
+      grid-area: avatar;
+      width: 100px;
+      margin: 0;
+      align-self: start;
+    }
+  
+    .contact-links {
+      margin-top: 6px;
+      padding-left: 0;
+    }
+  
+    .contact-links li {
+      margin-bottom: 6px;
     }
   
     .content {
