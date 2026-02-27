@@ -1,4 +1,59 @@
-/* Base */
+/* =========================================
+   1. 테마 변수 설정 (Theme Variables)
+   ========================================= */
+/* 기본 상태 (라이트 모드) */
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --border-color: #ccc;
+  --footer-color: #666;
+  --link-color: inherit;
+  --h2-border-color: #ddd;
+  --toggle-hover: rgba(0, 0, 0, 0.1);
+  --toggle-border: #ccc;
+}
+
+/* OS 설정이 다크 모드일 때 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+    --footer-color: #aaa;
+    --link-color: #90caf9;
+    --h2-border-color: #444;
+    --toggle-hover: rgba(255, 255, 255, 0.1);
+    --toggle-border: #555;
+  }
+}
+
+/* 사용자가 명시적으로 라이트 모드 버튼을 눌렀을 때 (OS 무시) */
+html[data-theme="light"] {
+  --bg-color: #fff;
+  --text-color: #333;
+  --border-color: #ccc;
+  --footer-color: #666;
+  --link-color: inherit;
+  --h2-border-color: #ddd;
+  --toggle-hover: rgba(0, 0, 0, 0.1);
+  --toggle-border: #ccc;
+}
+
+/* 사용자가 명시적으로 다크 모드 버튼을 눌렀을 때 (OS 무시) */
+html[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --border-color: #444;
+  --footer-color: #aaa;
+  --link-color: #90caf9;
+  --h2-border-color: #444;
+  --toggle-hover: rgba(255, 255, 255, 0.1);
+  --toggle-border: #555;
+}
+
+/* =========================================
+   2. 기본 스타일 (Base)
+   ========================================= */
 * {
   box-sizing: border-box;
 }
@@ -7,8 +62,15 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: #fff;
+  /* 하드코딩된 색상 대신 변수 사용 */
+  color: var(--text-color);
+  background: var(--bg-color);
+  /* 테마 전환 시 부드러운 애니메이션 효과 추가 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--link-color);
 }
 
 .custom-link {
@@ -24,7 +86,9 @@ body {
   vertical-align: middle;
 }
 
-/* Layout */
+/* =========================================
+   3. 레이아웃 (Layout)
+   ========================================= */
 .layout {
   display: flex;
   flex-wrap: wrap;
@@ -34,11 +98,12 @@ body {
   padding: 20px;
 }
 
+/* 사이드바 */
 .sidebar {
   flex: 0 0 240px;
   max-width: 300px;
   padding-right: 20px;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--border-color);
   word-break: break-word;
   display: flex;
   flex-direction: column;
@@ -81,7 +146,25 @@ body {
   margin-bottom: 8px;
 }
 
-/* Content */
+/* 테마 토글 버튼 */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--toggle-border);
+  color: var(--text-color);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--toggle-hover);
+}
+
+/* 메인 콘텐츠 */
 .content {
   flex: 1 1 600px;
   min-width: 0;
@@ -103,6 +186,14 @@ body {
   font-style: italic;
 }
 
+.sub-detail {
+  display: block;
+  margin-left: 1.5rem;
+  margin-top: 0.2rem;
+  color: inherit;
+  opacity: 0.8;
+}
+
 .spaced {
   margin-bottom: 30px !important;
 }
@@ -110,46 +201,23 @@ body {
 h2 {
   margin-top: 1.5em;
   font-size: 1.2em;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--h2-border-color);
   padding-bottom: 4px;
 }
 
-/* Footer */
+/* 푸터 */
 .site-footer {
   text-align: center;
   padding: 20px;
   font-size: 0.9em;
-  color: #666;
-  border-top: 1px solid #ddd;
+  color: var(--footer-color);
+  border-top: 1px solid var(--border-color);
   margin-top: 40px;
 }
 
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #121212;
-    color: #e0e0e0;
-  }
-
-  .sidebar {
-    border-right: 1px solid #444;
-  }
-
-  .site-footer {
-    border-top: 1px solid #444;
-    color: #aaa;
-  }
-
-  a {
-    color: #90caf9;
-  }
-
-  h2 {
-    border-bottom: 1px solid #444;
-  }
-}
-
-/* Mobile */
+/* =========================================
+   4. 모바일 반응형 (Mobile)
+   ========================================= */
 @media (max-width: 768px) {
   .layout {
     gap: 16px;
@@ -163,6 +231,13 @@ h2 {
     gap: 16px;
     padding-right: 0;
     border: none;
+    flex-wrap: wrap; /* 토글 버튼이 겹치지 않게 줄바꿈 허용 */
+  }
+
+  .theme-toggle {
+    margin: 0 auto 10px auto;
+    width: 100%; /* 모바일에서는 버튼을 꽉 차게 */
+    max-width: 200px;
   }
 
   .avatar {
