@@ -372,6 +372,12 @@ h2 {
       margin-bottom: 20px;
       list-style-position: inside;
     }
+
+    /* 영문 모토 모바일 전용 크기 조정*/
+    .about-motto {
+      font-size: 0.95em;   /* 기본 1.15em에서 살짝 줄임 */
+      line-height: 1.4;    /* 줄간격도 모바일에 맞게 살짝 타이트하게 */
+    }
   
     h2 {
       margin-top: 1.5em;
