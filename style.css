@@ -282,43 +282,65 @@ h2 {
       border: none;
   
       display: grid;
-      grid-template-columns: 100px 1fr; /* avatar | details */
-      grid-template-rows: auto auto;     /* title | row */
+      grid-template-columns: 100px 1fr; /* left | right */
+      grid-template-areas:
+        "title  title"
+        "avatar details";
       column-gap: 16px;
       row-gap: 12px;
       align-items: start;
     }
   
-    /* 상단 중앙: 이름 + 한국어 motto */
-    .sidebar-info {
-      /* sidebar의 grid 위에 전체폭으로 올라가게 */
-      grid-column: 1 / -1;
-      grid-row: 1;
-      text-align: center;
-  
-      display: grid;
-      grid-template-columns: 100px 1fr; /* 아래 줄 정렬과 폭 맞추기용 */
-      row-gap: 6px;
+    /* 토글은 레이아웃에서 제외 */
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
+      z-index: 10;
     }
   
-    .sidebar-info h1,
-    .sidebar-info .role {
-      grid-column: 1 / -1; /* sidebar-info 내부에서도 전체폭 */
-      margin: 0;
-    }
-  
-    /* 아래 2열: 좌 avatar, 우 contact */
+    /* 2행 좌측 */
     .avatar {
-      grid-column: 1;
-      grid-row: 2;
+      grid-area: avatar;
       width: 100px;
       margin: 0;
       align-self: start;
     }
   
+    /* 1행 전체폭(중앙 정렬) + 내부에서 contact만 2행 오른쪽으로 빼기 */
+    .sidebar-info {
+      /* title 영역에 배치 */
+      grid-area: title;
+  
+      /* 내부를 다시 grid로 쪼갬 */
+      display: grid;
+      grid-template-columns: 100px 1fr; /* 아래 details 폭과 맞추기 */
+      grid-template-areas:
+        "name  name"
+        "motto motto"
+        ".     links";
+      row-gap: 8px;
+      text-align: center;
+    }
+  
+    .sidebar-info h1 {
+      grid-area: name;
+      margin: 0;
+    }
+  
+    .sidebar-info .role {
+      grid-area: motto;
+      margin: 0;
+    }
+  
+    /* contact-links를 2행 우측(details 자리로 내리기) */
     .contact-links {
-      grid-column: 2;
-      grid-row: 2;
+      grid-area: links;
+      justify-self: start;
+      text-align: left;
       margin: 0;
       padding-left: 0;
     }
@@ -326,7 +348,8 @@ h2 {
     .contact-links li {
       margin-bottom: 6px;
     }
-  
+  }
+
     /* 토글 버튼 */
     .theme-toggle {
       position: fixed;
