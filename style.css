@@ -272,12 +272,6 @@ h2 {
 /* =========================================
    8. 모바일 반응형 (Mobile)
    ========================================= */
-/* =========================================
-   8. 모바일 반응형 (Mobile)
-   ========================================= */
-/* =========================================
-   8. 모바일 반응형 (Mobile)
-   ========================================= */
    @media (max-width: 768px) {
     .layout {
       gap: 16px;
@@ -285,49 +279,52 @@ h2 {
       padding-top: 60px;
     }
   
-    /* 사이드바 배치 변경: 상단 중앙(이름) + 하단 좌우(사진/연락처) */
+    /* 사이드바 배치: 이름/모토(상단) + 사진/정보(하단 나란히) */
     .sidebar {
       flex: 1 1 100%;
       display: grid;
-      /* 영역 정의: info가 상단 전체, pic과 links가 하단 좌우 차지 */
       grid-template-areas: 
         "info info"
         "pic links";
-      grid-template-columns: 120px 1fr; /* 사진 120px, 나머지는 연락처 */
-      gap: 16px;
+      grid-template-columns: 100px 1fr; /* 사진 100px, 나머지는 정보 */
+      gap: 15px;
       align-items: center;
       border: none;
       padding-right: 0;
-      margin-bottom: 20px;
+      padding-bottom: 25px; /* 구분선 위쪽 여백 */
+      margin-bottom: 30px; /* 메인 콘텐츠와의 간격 */
+      border-bottom: 1px solid var(--border-color); /* 이름, 모토, 정보, 사진 전체 하단 구분선 */
     }
   
     /* 상단 이름 및 한국어 좌우명 영역 */
     .sidebar-info {
       grid-area: info;
-      text-align: center; /* 이름과 좌우명을 중앙으로 */
+      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border-color); /* 구분선 (선택사항) */
+      gap: 4px;
+      margin-bottom: 5px;
     }
   
     .sidebar-info h1 {
-      margin: 0 0 4px;
-      font-size: 1.8em;
+      margin: 0;
+      font-size: 1.7em;
     }
   
     .role {
       margin: 0;
       font-size: 0.85em;
+      opacity: 0.9;
     }
   
     /* 하단 왼쪽: 사진 */
     .avatar {
       grid-area: pic;
-      width: 120px;
-      height: auto;
-      margin: 0 auto;
+      width: 100px; /* 같은 행 배치를 위해 크기 고정 */
+      height: 100px;
+      object-fit: cover; /* 사진이 정사각이 아닐 경우 대비 */
+      margin: 0;
+      border-radius: 8px;
     }
   
     /* 하단 오른쪽: 연락처 정보 */
@@ -338,12 +335,14 @@ h2 {
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
   
     .contact-links li {
       margin-bottom: 0;
-      font-size: 0.9em;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
     }
   
     /* 콘텐츠 및 공통 요소 */
@@ -376,6 +375,6 @@ h2 {
     }
   
     h2 {
-      margin-top: 1.8em;
+      margin-top: 1.5em;
     }
   }
