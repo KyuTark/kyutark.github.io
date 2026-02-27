@@ -311,11 +311,15 @@ h2 {
       font-size: 1.7em;
     }
   
+    /* 한글 이름(기존 .role) 스타일 조정 */
     .role {
       grid-area: motto;
-      margin: 0 0 15px 0; /* 사진과의 간격을 위해 아래 여백 추가 */
+      margin: 0 0 15px 0;
       text-align: center;
-      font-size: 0.85em;
+      font-size: 1.1em;      /* 이름을 강조하기 위해 기존 0.85em에서 키움 */
+      font-weight: 600;      /* 성함이니만큼 조금 더 진하게 */
+      letter-spacing: 0.05em; /* 한글은 자간을 살짝 주면 더 고급스럽습니다 */
+      opacity: 0.9;
     }
   
     /* 좌측 50% 블록: 사진을 블록 내부의 '정중앙'에 배치 */
