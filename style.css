@@ -9,9 +9,9 @@
   --footer-color: #666666;
   --link-color: #0056b3; 
   --h2-border-color: #dddddd;
-  --toggle-hover: rgba(0, 0, 0, 0.1);
+  --toggle-hover: rgba(0, 0, 0, 0.05);
   --toggle-border: #cccccc;
-  --icon-filter: none; /* 기본 아이콘 색상 유지 */
+  --icon-filter: brightness(0);
 }
 
 /* 다크 모드 (사용자가 명시적으로 다크 모드 버튼을 눌렀을 때) */
@@ -24,7 +24,7 @@
   --h2-border-color: #444444;
   --toggle-hover: rgba(255, 255, 255, 0.1);
   --toggle-border: #555555;
-  --icon-filter: brightness(0) invert(1); /* 검은색 아이콘을 흰색으로 반전 */
+  --icon-filter: none;
 }
 
 /* OS 설정이 다크 모드이면서, 사용자가 명시적으로 라이트 모드를 누르지 않은 경우 */
@@ -38,7 +38,7 @@
     --h2-border-color: #444444;
     --toggle-hover: rgba(255, 255, 255, 0.1);
     --toggle-border: #555555;
-    --icon-filter: brightness(0) invert(1);
+    --icon-filter: none;
   }
 }
 
@@ -55,7 +55,6 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
-  /* 테마 전환 시 부드러운 애니메이션 효과 추가 */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -75,7 +74,6 @@ a {
   height: 16px;
   margin-right: 6px;
   vertical-align: middle;
-  /* 다크 모드일 때 아이콘 색상 자동 반전 */
   filter: var(--icon-filter);
   transition: filter 0.3s ease;
 }
@@ -90,6 +88,7 @@ a {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
+  padding-top: 40px; /* 플로팅 버튼을 위해 상단 여백 조금 추가 */
 }
 
 /* 사이드바 */
@@ -141,25 +140,45 @@ a {
   margin-bottom: 8px;
 }
 
-/* 테마 토글 버튼 */
+/* =========================================
+   4. 테마 토글 버튼 (화면 우측 상단 고정 플로팅 - 동그란 아이콘)
+   ========================================= */
 .theme-toggle {
-  background: none;
-  border: 1px solid var(--toggle-border);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: var(--bg-color); 
+  border: 1px solid var(--border-color);
   color: var(--text-color);
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
+  border-radius: 50%;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  font-size: 1.3rem; 
+  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .theme-toggle:hover {
   background-color: var(--toggle-hover);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* 메인 콘텐츠 */
+[data-theme="dark"] .theme-toggle {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   5. 메인 콘텐츠 (Content)
+   ========================================= */
 .content {
   flex: 1 1 600px;
   min-width: 0;
@@ -213,12 +232,22 @@ h2 {
 }
 
 /* =========================================
-   4. 모바일 반응형 (Mobile)
+   6. 모바일 반응형 (Mobile)
    ========================================= */
 @media (max-width: 768px) {
   .layout {
     gap: 16px;
     padding: 16px;
+    padding-top: 60px; /* 모바일에서 버튼과 겹치지 않게 여백 추가 */
+  }
+
+  /* 모바일 토글 버튼 크기 조정 */
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
 
   .sidebar {
@@ -229,12 +258,6 @@ h2 {
     padding-right: 0;
     border: none;
     flex-wrap: wrap; 
-  }
-
-  .theme-toggle {
-    margin: 0 auto 10px auto;
-    width: 100%; 
-    max-width: 200px;
   }
 
   .avatar {
