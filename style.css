@@ -270,7 +270,7 @@ h2 {
 }
 
 /* =========================================
-   8. 모바일 반응형 (Mobile) - 구조 맞춤형 최종 교정
+   8. 모바일 반응형 (Mobile) - HTML 수정 없는 완벽한 Grid 배치
    ========================================= */
    @media (max-width: 768px) {
     .layout {
@@ -279,74 +279,68 @@ h2 {
       padding-top: 60px;
     }
   
-    /* 사이드바 전체: 요소들을 세로로 나열 */
+    /* 사이드바를 Grid로 설정하여 화면을 조각냅니다 */
     .sidebar {
       flex: 1 1 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* 모든 요소를 가로축 중앙으로 */
+      display: grid;
+      /* 우리가 원하는 완벽한 배치도: 이름(위), 모토(중간), 사진+정보(아래) */
+      grid-template-areas: 
+        "name name"
+        "motto motto"
+        "pic links";
+      grid-template-columns: 100px 1fr; /* 사진 크기 100px, 나머지 정보 */
+      gap: 8px 20px; /* 위아래 간격 8px, 좌우 간격 20px */
+      align-items: center;
       border: none;
       padding-right: 0;
       margin-bottom: 20px;
       padding-bottom: 25px;
-      border-bottom: 1px solid var(--border-color); /* 요청하신 전체 하단 구분선 */
+      border-bottom: 1px solid var(--border-color); /* 하단 구분선 */
     }
   
-    /* 이름과 한글 좌우명을 담은 박스 (중앙 정렬) */
+    /* 🚀 핵심 마법: .sidebar-info 상자의 껍데기를 시각적으로 없앱니다 */
     .sidebar-info {
-      order: 1; /* 사진보다 위로 올림 */
-      text-align: center;
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 0;
+      display: contents; 
     }
   
+    /* 이제 각각의 요소들을 설계도(Grid)에 맞춰 쏙쏙 넣습니다 */
     .sidebar-info h1 {
-      margin: 0 auto 5px;
+      grid-area: name;
+      margin: 0;
+      text-align: center;
       font-size: 1.7em;
     }
   
     .role {
-      margin: 0 auto 15px;
+      grid-area: motto;
+      margin: 0 0 10px 0; /* 사진/정보와의 간격 확보 */
+      text-align: center;
       font-size: 0.85em;
-      display: block; /* 가로 가득 채워 중앙 정렬 보장 */
     }
   
-    /* 사진과 연락처를 한 행에 배치하기 위한 기법 */
-    /* 사진을 위로 올리고 연락처와 나란히 두기 위해 컨테이너 재설정 */
     .avatar {
-      order: 2; /* 이름 아래로 */
+      grid-area: pic;
       width: 100px;
       height: 100px;
       margin: 0;
-      display: inline-block;
-      float: left; /* 텍스트를 옆으로 붙임 */
     }
   
     .contact-links {
-      order: 3;
-      display: inline-block;
-      width: calc(100% - 120px); /* 사진 제외한 나머지 너비 */
-      margin: 0 0 0 20px !important; /* 사진과의 간격 */
+      grid-area: links;
+      margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px; /* 정보 줄 간격 */
       text-align: left;
-      vertical-align: top;
-    }
-  
-    /* float 해제 (구분선이 제 위치에 오게 함) */
-    .sidebar::after {
-      content: "";
-      display: table;
-      clear: both;
     }
   
     .contact-links li {
-      margin-bottom: 6px;
-      list-style: none;
+      margin: 0;
       font-size: 0.85em;
     }
   
-    /* 콘텐츠 및 기타 모바일 최적화 */
+    /* 기타 공통 모바일 최적화 */
     .theme-toggle {
       top: 15px;
       right: 15px;
