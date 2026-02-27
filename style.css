@@ -137,10 +137,12 @@ a {
 
 .role {
   text-align: center;
-  font-size: 0.8em;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  font-size: 1.0em;        /* 모바일과 동일하게 1.1em으로 큼직하게 */
+  font-weight: 600;        /* 굵게 */
+  letter-spacing: 0.1em;   /* 자간을 넓혀서 당당한 느낌 */
+  margin-top: 5px;         /* 위쪽 영어 이름(KyuTark Kim)과 살짝 간격 띄우기 */
+  margin-bottom: 15px;     /* 아래쪽 연락처 정보와 간격 띄우기 */
+  opacity: 0.9;
 }
 
 .contact-links {
@@ -316,8 +318,8 @@ h2 {
       grid-area: motto;
       margin: 0 0 15px 0;
       text-align: center;
-      font-size: 1.3em !important;      /* 이름을 강조하기 위해 기존 0.85em에서 키움 */
-      font-weight: 700 !important;      /* 성함이니만큼 조금 더 진하게 */
+      font-size: 1.0em;      /* 이름을 강조하기 위해 기존 0.85em에서 키움 */
+      font-weight: 600;      /* 성함이니만큼 조금 더 진하게 */
       letter-spacing: 0.1em; /* 한글은 자간을 살짝 주면 더 고급스럽습니다 */
       opacity: 0.9;
     }
