@@ -64,17 +64,12 @@ html[data-theme="dark"] {
 
 body {
   margin: 0;
-  /* 전체 기본 폰트는 가독성 좋은 Noto Sans KR */
+  /* 전체 기본 폰트는 가독성 좋은 Noto Sans KR (이름, 소제목 모두 여기에 포함됨) */
   font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* 제목 폰트는 고급스러운 Lora 적용 */
-h1, h2 {
-  font-family: 'Lora', serif;
 }
 
 a {
@@ -146,7 +141,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-family: 'Noto Sans KR', sans-serif; /* 한글 좌우명 Noto Sans 고정 */
 }
 
 .contact-links {
@@ -233,7 +227,7 @@ a {
 
 h2 {
   margin-top: 1.5em;
-  font-size: 1.3em; /* Lora 폰트에 맞춰 살짝 키움 */
+  font-size: 1.2em; /* Noto Sans에 맞춰 원래 크기로 복구 */
   border-bottom: 1px solid var(--h2-border-color);
   padding-bottom: 4px;
   transition: border-color 0.3s ease;
@@ -242,9 +236,9 @@ h2 {
 /* =========================================
    6. 특수 요소 디자인 (슬로건 & 링크)
    ========================================= */
-/* About 섹션 슬로건 */
+/* About 섹션 슬로건 (오직 이 부분만 Lora 폰트 적용!) */
 .about-motto {
-  font-family: 'Lora', serif; /* 슬로건에 Lora 적용 */
+  font-family: 'Lora', serif; 
   text-align: center; 
   margin: 2em 0;      
   font-size: 1.15em;   
@@ -282,7 +276,7 @@ h2 {
   .layout {
     gap: 16px;
     padding: 16px;
-    padding-top: 60px; /* 모바일에서 토글 버튼과 겹치지 않게 여백 추가 */
+    padding-top: 60px;
   }
 
   .theme-toggle {
