@@ -270,7 +270,7 @@ h2 {
 }
 
 /* =========================================
-   8. 모바일 반응형 (Mobile)
+   8. 모바일 반응형 (Mobile) - 레이아웃 최종 교정
    ========================================= */
    @media (max-width: 768px) {
     .layout {
@@ -279,70 +279,78 @@ h2 {
       padding-top: 60px;
     }
   
-    /* 사이드바 배치: 이름/모토(상단) + 사진/정보(하단 나란히) */
+    /* 사이드바 전체 컨테이너 */
     .sidebar {
       flex: 1 1 100%;
-      display: grid;
-      grid-template-areas: 
-        "info info"
-        "pic links";
-      grid-template-columns: 100px 1fr; /* 사진 100px, 나머지는 정보 */
-      gap: 15px;
-      align-items: center;
+      display: block; /* Grid 대신 블록 레이아웃으로 안정성 확보 */
       border: none;
       padding-right: 0;
-      padding-bottom: 25px; /* 구분선 위쪽 여백 */
-      margin-bottom: 30px; /* 메인 콘텐츠와의 간격 */
-      border-bottom: 1px solid var(--border-color); /* 이름, 모토, 정보, 사진 전체 하단 구분선 */
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color); /* 요청하신 전체 하단 구분선 */
+      width: 100%;
     }
   
-    /* 상단 이름 및 한국어 좌우명 영역 */
+    /* 상단: 이름 및 한국어 좌우명 (완전 중앙 정렬) */
     .sidebar-info {
-      grid-area: info;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 5px;
+      width: 100%;
+      margin-bottom: 20px;
     }
   
     .sidebar-info h1 {
-      margin: 0;
+      margin: 0 auto 6px auto;
       font-size: 1.7em;
+      display: block;
     }
   
     .role {
-      margin: 0;
+      margin: 0 auto;
       font-size: 0.85em;
-      opacity: 0.9;
-    }
-  
-    /* 하단 왼쪽: 사진 */
-    .avatar {
-      grid-area: pic;
-      width: 100px; /* 같은 행 배치를 위해 크기 고정 */
-      height: 100px;
-      object-fit: cover; /* 사진이 정사각이 아닐 경우 대비 */
-      margin: 0;
-      border-radius: 8px;
-    }
-  
-    /* 하단 오른쪽: 연락처 정보 */
-    .contact-links {
-      grid-area: links;
-      padding-left: 0;
-      margin: 0;
-      text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      align-items: center; /* 한글 좌우명 내부 요소 중앙 정렬 */
     }
   
-    .contact-links li {
-      margin-bottom: 0;
-      font-size: 0.85em;
+    /* 하단: 사진과 연락처를 감싸는 가로 행 컨테이너 */
+    /* HTML 구조상 sidebar 내부 요소들을 나란히 배치하기 위해 Flex 사용 */
+    .sidebar {
       display: flex;
+      flex-direction: column;
       align-items: center;
+    }
+  
+    /* 사진과 연락처를 나란히 놓기 위한 내부 래퍼 설정 */
+    /* 기존 HTML 구조를 유지하면서 스타일만으로 배치 */
+    .avatar {
+      float: left; /* 강제 왼쪽 배치 */
+      width: 100px;
+      height: 100px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+  
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100px; /* 사진 높이와 맞춰 정렬 */
+      padding-left: 0;
+      margin: 0;
+    }
+  
+    /* float 해제를 위해 사이드바 하단에 투명 요소 추가 효과 */
+    .sidebar::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  
+    /* 연락처 텍스트 정렬 */
+    .contact-links li {
+      font-size: 0.85em;
+      margin-bottom: 4px;
+      list-style: none;
     }
   
     /* 콘텐츠 및 공통 요소 */
@@ -351,7 +359,6 @@ h2 {
       right: 15px;
       width: 40px;
       height: 40px;
-      font-size: 1.1rem;
     }
   
     .content {
