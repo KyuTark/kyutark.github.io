@@ -276,22 +276,58 @@ h2 {
    8. 모바일 반응형 (Mobile)
    ========================================= */
    @media (max-width: 768px) {
-
     .sidebar {
       flex: 1 1 100%;
       padding-right: 0;
       border: none;
   
       display: grid;
-      grid-template-columns: 100px 1fr;
-      grid-template-areas:
-        "title title"
-        "avatar info";
+      grid-template-columns: 100px 1fr; /* avatar | details */
+      grid-template-rows: auto auto;     /* title | row */
       column-gap: 16px;
       row-gap: 12px;
       align-items: start;
     }
   
+    /* 상단 중앙: 이름 + 한국어 motto */
+    .sidebar-info {
+      /* sidebar의 grid 위에 전체폭으로 올라가게 */
+      grid-column: 1 / -1;
+      grid-row: 1;
+      text-align: center;
+  
+      display: grid;
+      grid-template-columns: 100px 1fr; /* 아래 줄 정렬과 폭 맞추기용 */
+      row-gap: 6px;
+    }
+  
+    .sidebar-info h1,
+    .sidebar-info .role {
+      grid-column: 1 / -1; /* sidebar-info 내부에서도 전체폭 */
+      margin: 0;
+    }
+  
+    /* 아래 2열: 좌 avatar, 우 contact */
+    .avatar {
+      grid-column: 1;
+      grid-row: 2;
+      width: 100px;
+      margin: 0;
+      align-self: start;
+    }
+  
+    .contact-links {
+      grid-column: 2;
+      grid-row: 2;
+      margin: 0;
+      padding-left: 0;
+    }
+  
+    .contact-links li {
+      margin-bottom: 6px;
+    }
+  
+    /* 토글 버튼 */
     .theme-toggle {
       position: fixed;
       top: 15px;
@@ -300,66 +336,5 @@ h2 {
       height: 40px;
       font-size: 1.1rem;
       z-index: 10;
-    }
-  
-    /* 이름 + 한국어 motto를 하나의 title 블록으로 */
-    .sidebar-info {
-      grid-area: info;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .sidebar-info h1,
-    .sidebar-info .role {
-      grid-area: title;
-      text-align: center;
-    }
-  
-    .sidebar-info h1 {
-      margin: 0 0 6px;
-    }
-  
-    .sidebar-info .role {
-      margin: 0 0 10px;
-    }
-  
-    .avatar {
-      grid-area: avatar;
-      width: 100px;
-      margin: 0;
-      align-self: start;
-    }
-  
-    .contact-links {
-      margin-top: 6px;
-      padding-left: 0;
-    }
-  
-    .contact-links li {
-      margin-bottom: 6px;
-    }
-  
-    .content {
-      flex-basis: 100%;
-      padding-left: 0;
-    }
-  
-    .date {
-      float: none !important;
-      display: block;
-      text-align: left;
-      margin-top: 2px;
-      margin-bottom: 8px;
-      font-size: 0.85em;
-      opacity: 0.8;
-    }
-  
-    .content li {
-      margin-bottom: 20px;
-      list-style-position: inside;
-    }
-  
-    h2 {
-      margin-top: 1.8em;
     }
   }
