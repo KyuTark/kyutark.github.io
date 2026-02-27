@@ -270,7 +270,7 @@ h2 {
 }
 
 /* =========================================
-   8. 모바일 반응형 (Mobile) - HTML 수정 없는 완벽한 Grid 배치
+   8. 모바일 반응형 (Mobile) - 50:50 완벽 대칭 레이아웃
    ========================================= */
    @media (max-width: 768px) {
     .layout {
@@ -279,31 +279,31 @@ h2 {
       padding-top: 60px;
     }
   
-    /* 사이드바를 Grid로 설정하여 화면을 조각냅니다 */
+    /* 사이드바 대칭 정렬: 좌우 여백을 없애고 100% 꽉 채운 후, 50:50 분할 */
     .sidebar {
       flex: 1 1 100%;
+      width: 100%;
       display: grid;
-      /* 우리가 원하는 완벽한 배치도: 이름(위), 모토(중간), 사진+정보(아래) */
       grid-template-areas: 
         "name name"
         "motto motto"
         "pic links";
-      grid-template-columns: 100px 1fr; /* 사진 크기 100px, 나머지 정보 */
-      gap: 8px 20px; /* 위아래 간격 8px, 좌우 간격 20px */
+      /* 🌟 핵심: 화면을 정확히 1:1 (50% 50%) 비율로 나눕니다 */
+      grid-template-columns: 1fr 1fr; 
+      gap: 8px 0; /* 가로 간격(0)은 각 셀 내부에서 조절합니다 */
       align-items: center;
       border: none;
-      padding-right: 0;
-      margin-bottom: 20px;
+      padding: 0; /* 왼쪽 쏠림 방지를 위해 패딩 초기화 */
+      margin: 0 auto 20px auto; 
       padding-bottom: 25px;
-      border-bottom: 1px solid var(--border-color); /* 하단 구분선 */
+      border-bottom: 1px solid var(--border-color); /* 완벽히 중앙 정렬된 구분선 */
     }
   
-    /* 🚀 핵심 마법: .sidebar-info 상자의 껍데기를 시각적으로 없앱니다 */
     .sidebar-info {
       display: contents; 
     }
   
-    /* 이제 각각의 요소들을 설계도(Grid)에 맞춰 쏙쏙 넣습니다 */
+    /* 이름과 모토: 2칸(name name)을 다 차지하며 정중앙에 위치 */
     .sidebar-info h1 {
       grid-area: name;
       margin: 0;
@@ -313,26 +313,31 @@ h2 {
   
     .role {
       grid-area: motto;
-      margin: 0 0 10px 0; /* 사진/정보와의 간격 확보 */
+      margin: 0 0 15px 0; /* 사진과의 간격을 위해 아래 여백 추가 */
       text-align: center;
       font-size: 0.85em;
     }
   
+    /* 좌측 50% 블록: 사진을 블록 내부의 '정중앙'에 배치 */
     .avatar {
       grid-area: pic;
       width: 100px;
       height: 100px;
-      margin: 0;
+      margin: 0 auto; /* 좌우 여백을 동일하게 주어 중앙 정렬 */
+      display: block;
     }
   
+    /* 우측 50% 블록: 정보를 블록 내부의 '왼쪽'에 배치 */
     .contact-links {
       grid-area: links;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px; /* 정보 줄 간격 */
+      gap: 8px;
       text-align: left;
+      justify-self: start; /* 해당 50% 칸 안에서 왼쪽 끝으로 밀착 */
+      padding-left: 10px; /* 정중앙 선에 너무 딱 붙지 않게 살짝 여백 줌 */
     }
   
     .contact-links li {
@@ -340,7 +345,7 @@ h2 {
       font-size: 0.85em;
     }
   
-    /* 기타 공통 모바일 최적화 */
+    /* 모바일 공통 요소 최적화 */
     .theme-toggle {
       top: 15px;
       right: 15px;
