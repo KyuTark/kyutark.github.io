@@ -268,7 +268,6 @@ h2 {
   margin-top: 40px;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
-
 /* =========================================
    8. 모바일 반응형 (Mobile)
    ========================================= */
@@ -279,6 +278,68 @@ h2 {
       padding-top: 60px;
     }
   
+    /* 사이드바 배치 변경: 상단 중앙(이름) + 하단 좌우(사진/연락처) */
+    .sidebar {
+      flex: 1 1 100%;
+      display: grid;
+      /* 영역 정의: info가 상단 전체, pic과 links가 하단 좌우 차지 */
+      grid-template-areas: 
+        "info info"
+        "pic links";
+      grid-template-columns: 120px 1fr; /* 사진 120px, 나머지는 연락처 */
+      gap: 16px;
+      align-items: center;
+      border: none;
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    /* 상단 이름 및 한국어 좌우명 영역 */
+    .sidebar-info {
+      grid-area: info;
+      text-align: center; /* 이름과 좌우명을 중앙으로 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color); /* 구분선 (선택사항) */
+    }
+  
+    .sidebar-info h1 {
+      margin: 0 0 4px;
+      font-size: 1.8em;
+    }
+  
+    .role {
+      margin: 0;
+      font-size: 0.85em;
+    }
+  
+    /* 하단 왼쪽: 사진 */
+    .avatar {
+      grid-area: pic;
+      width: 120px;
+      height: auto;
+      margin: 0 auto;
+    }
+  
+    /* 하단 오른쪽: 연락처 정보 */
+    .contact-links {
+      grid-area: links;
+      padding-left: 0;
+      margin: 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+  
+    .contact-links li {
+      margin-bottom: 0;
+      font-size: 0.9em;
+    }
+  
+    /* 콘텐츠 및 공통 요소 */
     .theme-toggle {
       top: 15px;
       right: 15px;
@@ -287,68 +348,26 @@ h2 {
       font-size: 1.1rem;
     }
   
-    .sidebar {
-      flex: 1 1 100%;
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-      padding-right: 0;
-      border: none;
-      flex-wrap: wrap; 
-    }
-  
-    .avatar {
-      width: 100px;
-      margin: 0;
-      flex: 0 0 auto;
-    }
-  
-    .sidebar-info {
-      flex: 1;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  
-    .sidebar-info h1,
-    .sidebar-info .role,
-    .contact-links {
-      margin: 0 0 6px;
-    }
-  
-    .contact-links {
-      padding-left: 0;
-      margin-top: 10px;
-    }
-  
-    .contact-links li {
-      margin-bottom: 6px;
-    }
-  
     .content {
       flex-basis: 100%;
       padding-left: 0;
     }
   
-    /* 1. 날짜 겹침 방지: 우측 정렬을 풀고 아래로 보냅니다 */
     .date {
-      float: none !important; /* float 속성 강제 해제 */
-      display: block;        /* 줄 바꿈 처리 */
-      text-align: left;      /* 왼쪽 정렬 */
-      margin-top: 2px;       /* 제목과의 미세한 간격 */
-      margin-bottom: 8px;    /* 다음 항목과의 간격 */
+      float: none !important;
+      display: block;
+      text-align: left;
+      margin-top: 2px;
+      margin-bottom: 8px;
       font-size: 0.85em;
       opacity: 0.8;
     }
   
-    /* 2. 항목 간의 수직 거리 확보 */
     .content li {
-      margin-bottom: 20px;   /* 각 항목이 끝날 때 여백을 충분히 줍니다 */
-      list-style-position: inside; /* 불렛 포인트가 좁은 화면에서 잘리지 않게 */
+      margin-bottom: 20px;
+      list-style-position: inside;
     }
   
-    /* 3. 소제목 간격 조정 */
     h2 {
       margin-top: 1.8em;
     }
