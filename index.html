@@ -9,9 +9,7 @@
   <meta name="description" content="KyuTark Kim" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="KyuTark Kim" />
-  <!-- <meta property="og:description" content="Bioinformatics · Developer" /> -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kyutark.github.io/" />
   <meta property="og:image" content="https://kyutark.github.io/baby_kyutark.jpg" />
@@ -22,37 +20,40 @@
 
 <body>
   <div class="layout">
-    <!-- Sidebar -->
     <aside class="sidebar">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+        🌓 Theme
+      </button>
+
       <img src="kyutark.jpg" alt="KyuTark's photo" class="avatar" />
       <div class="sidebar-info">
         <h1>KyuTark Kim</h1>
-        <div class="role">
+        <div class="role" lang="ko">
           <div>일을 도모함에 있어</div>
           <div>어려움을 안락으로 삼으라</div>
         </div>
         <ul class="contact-links">
           <li>
-            <a href="mailto:kyutkim01@gmail.com" target="_blank" class="custom-link">
-              <img src="gmail-icon.png" alt="G Mail icon" class="icon" />
+            <a href="mailto:kyutkim01@gmail.com" target="_blank" rel="noopener noreferrer" class="custom-link">
+              <img src="gmail-icon.png" alt="" aria-hidden="true" class="icon" />
               Email
             </a>
           </li>
           <li>
-            <a href="https://github.com/Kyutark" target="_blank" class="custom-link">
-              <img src="github-icon.png" alt="GitHub icon" class="icon" />
+            <a href="https://github.com/Kyutark" target="_blank" rel="noopener noreferrer" class="custom-link">
+              <img src="github-icon.png" alt="" aria-hidden="true" class="icon" />
               GitHub
             </a>
           </li>
           <li>
-            <a href="https://" target="_blank" class="custom-link">
-              <img src="tstory-icon.png" alt="T Story icon" class="icon" />
+            <a href="https://your-blog-url.com" target="_blank" rel="noopener noreferrer" class="custom-link">
+              <img src="tstory-icon.png" alt="" aria-hidden="true" class="icon" />
               Blog
             </a>
           </li>
           <li>
-            <a href="./kyutark_cv.pdf" target="_blank" class="custom-link">
-              <img src="cv-icon.png" alt="CV icon" class="icon" />
+            <a href="./kyutark_cv.pdf" target="_blank" rel="noopener noreferrer" class="custom-link">
+              <img src="cv-icon.png" alt="" aria-hidden="true" class="icon" />
               CV
             </a>
           </li>
@@ -60,7 +61,6 @@
       </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="content">
       <section>
         <h2>About</h2>
@@ -72,22 +72,22 @@
         <ul>
           <li>
             <strong>KAIST</strong>
-            <i class="date">Mar 2026 -</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Graduate School of Engineering Biology
+            <time datetime="2026-03" class="date">Mar 2026 -</time>
+            <span class="sub-detail">Graduate School of Engineering Biology</span>
           </li>
           <li>
             <strong>Korea University</strong>
-            <i class="date">Aug 2025</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Bachelor of Science in Biotechnology
+            <time datetime="2025-08" class="date">Aug 2025</time>
+            <span class="sub-detail">Bachelor of Science in Biotechnology</span>
           </li>
           <li>
             <strong>Gyeongnam Science High School</strong>
-            <i class="date">Feb 2019</i>
+            <time datetime="2019-02" class="date">Feb 2019</time>
           </li>
           <li>
-            <strong>Millitary Service</strong>
-            <i class="date">Mar 2022 - Sep 2023</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Republic of Korea Army, 701<sup>st</sup> Commando Regiment
+            <strong>Military Service</strong>
+            <time datetime="2022-03" class="date">Mar 2022 - Sep 2023</time>
+            <span class="sub-detail">Republic of Korea Army, 701<sup>st</sup> Commando Regiment</span>
           </li>
         </ul>
       </section>
@@ -97,34 +97,34 @@
         <ul>
           <li>
             <strong>Laboratory of Quantitative and Computational Biology</strong>, KAIST
-            <i class="date">Jul 2025 - Aug 2025</i>
+            <time datetime="2025-07" class="date">Jul 2025 - Aug 2025</time>
           </li>
           <li>
             <strong>Computational and Synthetic Biology Laboratory</strong>, Korea University
-            <i class="date">Jul 2024 - May 2025</i>
+            <time datetime="2024-07" class="date">Jul 2024 - May 2025</time>
           </li>
           <li>
             <strong>Food Hygiene and Safety Laboratory</strong>, Korea University
-            <i class="date">Sep 2023 - Jun 2024</i>
+            <time datetime="2023-09" class="date">Sep 2023 - Jun 2024</time>
           </li>
           <li class="spaced">
             <strong>Institute of Biomedical and Food Safety</strong>, Korea University
-            <i class="date">Mar 2021 - Sep 2021</i>
+            <time datetime="2021-03" class="date">Mar 2021 - Sep 2021</time>
           </li>
           <li>
             <strong>Preprint</strong>, bioRxiv (https://doi.org/10.64898/2026.01.24.701546)
-            <i class="date">Jan 2026</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<i>A Structural Landscape of Fungal Allergens with Epitope-Level Resolution Reveals Cross-Kingdom Structural Similarity</i>
+            <time datetime="2026-01" class="date">Jan 2026</time>
+            <span class="sub-detail"><i>A Structural Landscape of Fungal Allergens with Epitope-Level Resolution Reveals Cross-Kingdom Structural Similarity</i></span>
           </li>
           <li>
-            <strong>Poster Presentation</strong>, RECOMB 2025 (Research in Computational Molecular Biology)
-            <i class="date">Apr 2025</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<i>Pan-Transcriptomic Pipeline for Public and In-house RNA-seq data</i>
+            <strong>Poster Presentation</strong>, RECOMB 2025
+            <time datetime="2025-04" class="date">Apr 2025</time>
+            <span class="sub-detail"><i>Pan-Transcriptomic Pipeline for Public and In-house RNA-seq data</i></span>
           </li>
           <li>
-            <strong>Patent Application</strong>, Korean Intellectural Property Office
-            <i class="date">Feb 2025</i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<i>System for Detecting Allergenic Species</i>
+            <strong>Patent Application</strong>, Korean Intellectual Property Office
+            <time datetime="2025-02" class="date">Feb 2025</time>
+            <span class="sub-detail"><i>System for Detecting Allergenic Species</i></span>
           </li>
         </ul>
       </section>
@@ -134,20 +134,20 @@
         <ul>
           <li>
             <strong>Graduated with Great Honor</strong>, Korea University
-            <i class="date"> Aug 2025</i>
+            <time datetime="2025-08" class="date">Aug 2025</time>
           </li>
           <li>
             <strong>Presidential Science Scholarship</strong>, Korea Student Aid Foundation
-            <i class="date"> Spring 2021 - Fall 2024 </i><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;Awarded by President Moon Jae-in, Republic of Korea
+            <time datetime="2021" class="date">Spring 2021 - Fall 2024</time>
+            <span class="sub-detail">Awarded by President Moon Jae-in, Republic of Korea</span>
           </li>
           <li>
             <strong>Dean's List</strong>, Korea University
-            <i class="date">6 semesters: 2019-2025</i>
+            <time class="date">6 semesters: 2019-2025</time>
           </li>
           <li>
             <strong>Best Research Award</strong>, Institute of Biomedical and Food Safety
-            <i class="date">Oct 2021</i>
+            <time datetime="2021-10" class="date">Oct 2021</time>
           </li>
         </ul>
       </section>
@@ -155,10 +155,11 @@
     </main>
   </div>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <small>© 2026 KyuTark Kim</small>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
