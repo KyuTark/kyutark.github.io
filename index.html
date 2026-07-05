@@ -38,46 +38,48 @@
 </head>
 
 <body>
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">◑</button>
+  <canvas id="sky" aria-hidden="true"></canvas>
 
-  <div class="layout">
-    <!-- ============ SIDEBAR ============ -->
-    <aside class="sidebar">
-      <div class="sidebar-inner">
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+    <span class="toggle-icon" aria-hidden="true">☾</span>
+  </button>
+
+  <div class="page">
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="avatar-wrap">
         <img src="kyutark.jpg" alt="Portrait of KyuTark Kim" class="avatar" />
-
-        <div class="identity">
-          <h1>KyuTark Kim</h1>
-          <p class="name-ko" lang="ko">김규탁</p>
-        </div>
-
-        <nav class="contact" aria-label="Contact and profiles">
-          <a href="mailto:kyutkim01@gmail.com" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M3 5.5h18v13H3zM3.4 6.2 12 12.6l8.6-6.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <span>Email</span>
-          </a>
-          <a href="https://github.com/Kyutark" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.66-.21.66-.47v-1.8c-2.7.59-3.3-1.15-3.3-1.15-.44-1.13-1.08-1.43-1.08-1.43-.9-.6.07-.59.07-.59 1 .07 1.5 1.02 1.5 1.02.88 1.5 2.3 1.07 2.86.82.09-.64.35-1.07.63-1.32-2.16-.24-4.43-1.08-4.43-4.8 0-1.06.38-1.93 1-2.6-.1-.25-.44-1.24.1-2.58 0 0 .82-.26 2.7 1a9.3 9.3 0 0 1 4.9 0c1.87-1.27 2.7-1 2.7-1 .53 1.34.2 2.33.1 2.58.63.67 1 1.54 1 2.6 0 3.73-2.27 4.55-4.44 4.79.36.3.67.9.67 1.82v2.7c0 .26.16.57.67.47A9.8 9.8 0 0 0 12 2.2Z" fill="currentColor"/></svg>
-            <span>GitHub</span>
-          </a>
-          <a href="https://kyutkim01.tistory.com/" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M4 4.5h11a4 4 0 0 1 4 4v11H8a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9.5h7M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            <span>Blog</span>
-          </a>
-          <a href="./kyutark_cv.pdf" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 3v6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <span>CV</span>
-          </a>
-        </nav>
       </div>
-    </aside>
+
+      <h1>KyuTark Kim</h1>
+      <p class="name-ko" lang="ko">김규탁</p>
+
+      <p class="motto"><em>I Explore the Cosmos of Life,<br />Navigating the Realms of Biology and Code.</em></p>
+
+      <nav class="contact" aria-label="Contact and profiles">
+        <a href="mailto:kyutkim01@gmail.com" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M3 5.5h18v13H3zM3.4 6.2 12 12.6l8.6-6.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>Email</span>
+        </a>
+        <a href="https://github.com/Kyutark" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.66-.21.66-.47v-1.8c-2.7.59-3.3-1.15-3.3-1.15-.44-1.13-1.08-1.43-1.08-1.43-.9-.6.07-.59.07-.59 1 .07 1.5 1.02 1.5 1.02.88 1.5 2.3 1.07 2.86.82.09-.64.35-1.07.63-1.32-2.16-.24-4.43-1.08-4.43-4.8 0-1.06.38-1.93 1-2.6-.1-.25-.44-1.24.1-2.58 0 0 .82-.26 2.7 1a9.3 9.3 0 0 1 4.9 0c1.87-1.27 2.7-1 2.7-1 .53 1.34.2 2.33.1 2.58.63.67 1 1.54 1 2.6 0 3.73-2.27 4.55-4.44 4.79.36.3.67.9.67 1.82v2.7c0 .26.16.57.67.47A9.8 9.8 0 0 0 12 2.2Z" fill="currentColor"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://kyutkim01.tistory.com/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M4 4.5h11a4 4 0 0 1 4 4v11H8a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9.5h7M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>Blog</span>
+        </a>
+        <a href="./kyutark_cv.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 3v6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>CV</span>
+        </a>
+      </nav>
+
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </header>
 
     <!-- ============ CONTENT ============ -->
     <main class="content">
-
-      <section class="intro">
-        <p class="motto"><em>I Explore the Cosmos of Life, Navigating the Realms of Biology and Code.</em></p>
-      </section>
 
       <section>
         <h2>Education</h2>
@@ -211,11 +213,11 @@
       </section>
 
     </main>
-  </div>
 
-  <footer class="site-footer">
-    <small>© 2026 KyuTark Kim</small>
-  </footer>
+    <footer class="site-footer">
+      <small>© 2026 KyuTark Kim</small>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
