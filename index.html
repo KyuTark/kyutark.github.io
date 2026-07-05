@@ -5,22 +5,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>KyuTark Kim</title>
+  <title>KyuTark Kim — Computational Biology</title>
   <link rel="canonical" href="https://kyutark.github.io/" />
-  <meta name="description" content="KyuTark Kim" />
+  <meta name="description" content="KyuTark Kim — Computational biologist at KAIST working across structural bioinformatics, RNA analysis, and machine learning." />
 
   <meta property="og:title" content="KyuTark Kim" />
   <meta property="og:site_name" content="KyuTark Kim" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kyutark.github.io/" />
   <meta property="og:image" content="https://kyutark.github.io/kyutark.jpg" />
-  
+
   <link rel="icon" href="/favicon.ico" sizes="any">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+KR:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 
   <script type="application/ld+json">
@@ -30,155 +32,230 @@
       "name": "KyuTark Kim",
       "url": "https://kyutark.github.io/",
       "image": "https://kyutark.github.io/kyutark.jpg",
+      "jobTitle": "Integrated MS/PhD Student",
+      "affiliation": { "@type": "Organization", "name": "KAIST" },
       "sameAs": ["https://github.com/Kyutark", "https://kyutkim01.tistory.com/"]
     }
-    </script>
+  </script>
 </head>
 
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        ◑
-      </button>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">◑</button>
 
-      <img src="kyutark.jpg" alt="KyuTark's photo" class="avatar" />
-      <div class="sidebar-info">
-        <h1>KyuTark Kim</h1>
-        <div class="role" lang="ko">
-          <div>김 규탁</div>
+  <div class="layout">
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <img src="kyutark.jpg" alt="Portrait of KyuTark Kim" class="avatar" />
+
+        <div class="identity">
+          <h1>KyuTark Kim</h1>
+          <p class="name-ko" lang="ko">김&thinsp;규&thinsp;탁</p>
+          <p class="tagline">Computational&nbsp;Biology · KAIST</p>
         </div>
-        <ul class="contact-links">
-          <li>
-            <a href="mailto:kyutkim01@gmail.com" rel="noopener noreferrer" class="custom-link">
-              <img src="gmail-icon.png" alt="" aria-hidden="true" class="icon" />
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Kyutark" target="_blank" rel="noopener noreferrer" class="custom-link">
-              <img src="github-icon.png" alt="" aria-hidden="true" class="icon" />
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href="https://kyutkim01.tistory.com/" target="_blank" rel="noopener noreferrer" class="custom-link">
-              <img src="tistory-icon.png" alt="" aria-hidden="true" class="icon" />
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="./kyutark_cv.pdf" target="_blank" rel="noopener noreferrer" class="custom-link">
-              <img src="cv-icon.png" alt="" aria-hidden="true" class="icon" />
-              CV
-            </a>
-          </li>
-        </ul>
+
+        <nav class="contact" aria-label="Contact and profiles">
+          <a href="mailto:kyutkim01@gmail.com" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M3 5.5h18v13H3zM3.4 6.2 12 12.6l8.6-6.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/Kyutark" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.66-.21.66-.47v-1.8c-2.7.59-3.3-1.15-3.3-1.15-.44-1.13-1.08-1.43-1.08-1.43-.9-.6.07-.59.07-.59 1 .07 1.5 1.02 1.5 1.02.88 1.5 2.3 1.07 2.86.82.09-.64.35-1.07.63-1.32-2.16-.24-4.43-1.08-4.43-4.8 0-1.06.38-1.93 1-2.6-.1-.25-.44-1.24.1-2.58 0 0 .82-.26 2.7 1a9.3 9.3 0 0 1 4.9 0c1.87-1.27 2.7-1 2.7-1 .53 1.34.2 2.33.1 2.58.63.67 1 1.54 1 2.6 0 3.73-2.27 4.55-4.44 4.79.36.3.67.9.67 1.82v2.7c0 .26.16.57.67.47A9.8 9.8 0 0 0 12 2.2Z" fill="currentColor"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://kyutkim01.tistory.com/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M4 4.5h11a4 4 0 0 1 4 4v11H8a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9.5h7M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span>Blog</span>
+          </a>
+        </nav>
+
+        <a class="cv-button" href="./kyutark_cv.pdf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 3v6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>Curriculum Vitae</span>
+        </a>
       </div>
     </aside>
 
+    <!-- ============ CONTENT ============ -->
     <main class="content">
-      <section>
-        <p class="about-motto"><strong><i>"I Explore the Cosmos of Life, Navigating the Realms of Biology and Code."</i></strong></p>
+
+      <section class="intro">
+        <p class="motto"><em>I explore the cosmos of life, navigating the realms of biology and code.</em></p>
+        <p class="about">
+          I am an integrated MS/PhD student at KAIST's Graduate School of Engineering Biology,
+          working at the interface of computational and experimental biology. My research combines
+          <strong>structural bioinformatics</strong>, <strong>RNA analysis</strong>, and
+          <strong>machine learning</strong> to uncover the rules that link biological sequence,
+          structure, and function — from the cross-kingdom structural similarity of allergens to
+          transcriptome-scale analysis pipelines.
+        </p>
+        <ul class="interests" aria-label="Research interests">
+          <li>Structural Bioinformatics</li>
+          <li>RNA Biology</li>
+          <li>Protein Structure Analysis</li>
+          <li>Machine Learning</li>
+          <li>Transcriptomics</li>
+        </ul>
       </section>
 
       <section>
-        <h2>Education</h2>
-        <ul>
+        <h2><span class="eyebrow">01</span>Education</h2>
+        <ul class="entries">
           <li>
-            <strong>KAIST</strong>
-            <time datetime="2026-03" class="date">Mar 2026 - </time>
-            <span class="sub-detail">Graduate School of Engineering Biology</span>
+            <div class="entry-head">
+              <span class="entry-title">KAIST</span>
+              <span class="entry-date">2026.03 — present</span>
+            </div>
+            <span class="entry-sub">Integrated MS/PhD, Graduate School of Engineering Biology</span>
           </li>
           <li>
-            <strong>Korea University</strong>
-            <time datetime="2025-08" class="date">Aug 2025</time>
-            <span class="sub-detail">Bachelor of Science in Biotechnology</span>
+            <div class="entry-head">
+              <span class="entry-title">Korea University</span>
+              <span class="entry-date">2025.08</span>
+            </div>
+            <span class="entry-sub">B.S. in Biotechnology · Graduated with Great Honor</span>
           </li>
           <li>
-            <strong>Gyeongnam Science High School</strong>
-            <time datetime="2019-02" class="date">Feb 2019</time>
+            <div class="entry-head">
+              <span class="entry-title">Gyeongnam Science High School</span>
+              <span class="entry-date">2019.02</span>
+            </div>
           </li>
           <li>
-            <strong>* Military Service</strong>
-            <time datetime="2022-03" class="date">Mar 2022 - Sep 2023</time>
-            <span class="sub-detail">Republic of Korea Army, 701<sup>st</sup> Commando Regiment</span>
+            <div class="entry-head">
+              <span class="entry-title">Military Service</span>
+              <span class="entry-date">2022.03 — 2023.09</span>
+            </div>
+            <span class="entry-sub">Republic of Korea Army · 701<sup>st</sup> Commando Regiment</span>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Research</h2>
-        <ul>
+        <h2><span class="eyebrow">02</span>Research Experience</h2>
+        <ul class="entries">
           <li>
-            <strong>Laboratory of Quantitative and Computational Biology</strong>, KAIST
-            <time datetime="2025-06" class="date">Jun 2025 - Feb 2026</time>
+            <div class="entry-head">
+              <span class="entry-title">Laboratory of Quantitative &amp; Computational Biology</span>
+              <span class="entry-date">2025.06 — 2026.02</span>
+            </div>
+            <span class="entry-sub">KAIST</span>
           </li>
           <li>
-            <strong>Computational and Synthetic Biology Laboratory</strong>, Korea University
-            <time datetime="2024-07" class="date">Jul 2024 - May 2025</time>
+            <div class="entry-head">
+              <span class="entry-title">Computational &amp; Synthetic Biology Laboratory</span>
+              <span class="entry-date">2024.07 — 2025.05</span>
+            </div>
+            <span class="entry-sub">Korea University</span>
           </li>
           <li>
-            <strong>Food Hygiene and Safety Laboratory</strong>, Korea University
-            <time datetime="2023-09" class="date">Sep 2023 - Jun 2024</time>
+            <div class="entry-head">
+              <span class="entry-title">Food Hygiene &amp; Safety Laboratory</span>
+              <span class="entry-date">2023.09 — 2024.06</span>
+            </div>
+            <span class="entry-sub">Korea University</span>
           </li>
-          <li class="spaced">
-            <strong>Institute of Biomedical and Food Safety</strong>, Korea University
-            <time datetime="2021-03" class="date">Mar 2021 - Sep 2021</time>
+          <li>
+            <div class="entry-head">
+              <span class="entry-title">Institute of Biomedical &amp; Food Safety</span>
+              <span class="entry-date">2021.03 — 2021.09</span>
+            </div>
+            <span class="entry-sub">Korea University</span>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Contributions</h2>
-        <ul>
+        <h2><span class="eyebrow">03</span>Selected Contributions</h2>
+        <ul class="entries">
           <li>
-            <strong>Preprint</strong>, bioRxiv 
-            (<a href="https://doi.org/10.64898/2026.01.24.701546" target="_blank" rel="noopener noreferrer" class="clean-link">doi: 10.64898/2026.01.24.701546</a>)
-            <time datetime="2026-01" class="date">Jan 2026</time>
-            <span class="sub-detail"><i>A Structural Landscape of Fungal Allergens with Epitope-Level Resolution Reveals Cross-Kingdom Structural Similarity</i></span>
+            <div class="entry-head">
+              <span class="entry-title">A Structural Landscape of Fungal Allergens with Epitope-Level Resolution Reveals Cross-Kingdom Structural Similarity</span>
+              <span class="entry-date">2026.01</span>
+            </div>
+            <span class="entry-sub">
+              Preprint · bioRxiv ·
+              <a class="doi" href="https://doi.org/10.64898/2026.01.24.701546" target="_blank" rel="noopener noreferrer">doi:10.64898/2026.01.24.701546</a>
+            </span>
           </li>
           <li>
-            <strong>Poster</strong>, RECOMB 2025
-            <time datetime="2025-04" class="date">Apr 2025</time>
-            <span class="sub-detail"><i>Pan-Transcriptomic Pipeline for Public and In-house RNA-seq Data</i></span>
+            <div class="entry-head">
+              <span class="entry-title">Pan-Transcriptomic Pipeline for Public and In-house RNA-seq Data</span>
+              <span class="entry-date">2025.04</span>
+            </div>
+            <span class="entry-sub">Poster · RECOMB 2025</span>
           </li>
           <li>
-            <strong>Patent Application</strong>, KIPO
-            <time datetime="2025-02" class="date">Feb 2025</time>
-            <span class="sub-detail"><i>System for Detecting Allergenic Species</i></span>
+            <div class="entry-head">
+              <span class="entry-title">System for Detecting Allergenic Species</span>
+              <span class="entry-date">2025.02</span>
+            </div>
+            <span class="entry-sub">Patent Application · KIPO</span>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Honors</h2>
-        <ul>
+        <h2><span class="eyebrow">04</span>Honors</h2>
+        <ul class="entries">
           <li>
-            <strong>Graduated with Great Honor</strong>, Korea University
-            <time datetime="2025-08" class="date">Aug 2025</time>
+            <div class="entry-head">
+              <span class="entry-title">Presidential Science Scholarship</span>
+              <span class="entry-date">2021.03 — 2025.02</span>
+            </div>
+            <span class="entry-sub">Korea Student Aid Foundation · awarded by the President of the Republic of Korea</span>
           </li>
           <li>
-            <strong>Presidential Science Scholarship</strong>, Korea Student Aid Foundation
-            <time datetime="2021-03" class="date">Mar 2021 - Feb 2025</time>
-            <span class="sub-detail">Awarded by President Moon Jae-in, Republic of Korea</span>
+            <div class="entry-head">
+              <span class="entry-title">Graduated with Great Honor</span>
+              <span class="entry-date">2025.08</span>
+            </div>
+            <span class="entry-sub">Korea University</span>
           </li>
           <li>
-            <strong>Dean's List</strong>, Korea University
-            <time datetime="2019" class="date">6 semesters: 2019 - 2025</time>
+            <div class="entry-head">
+              <span class="entry-title">Dean's List — 6 semesters</span>
+              <span class="entry-date">2019 — 2025</span>
+            </div>
+            <span class="entry-sub">Korea University</span>
           </li>
           <li>
-            <strong>Best Research Award</strong>, Institute of Biomedical and Food Safety
-            <time datetime="2021-10" class="date">Oct 2021</time>
+            <div class="entry-head">
+              <span class="entry-title">Best Research Award</span>
+              <span class="entry-date">2021.10</span>
+            </div>
+            <span class="entry-sub">Institute of Biomedical &amp; Food Safety</span>
           </li>
         </ul>
+      </section>
+
+      <section>
+        <h2><span class="eyebrow">05</span>Methods &amp; Tools</h2>
+        <div class="skills">
+          <div class="skill-group">
+            <span class="skill-label">Programming</span>
+            <div class="chips"><span>Python</span><span>R</span><span>Bash</span></div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">Structural</span>
+            <div class="chips"><span>AlphaFold2</span><span>TM-align</span><span>PyMOL</span><span>HDBSCAN</span></div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">Sequence / RNA</span>
+            <div class="chips"><span>RNA-seq</span><span>Salmon</span><span>fastp</span><span>ViennaRNA</span></div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">Machine Learning</span>
+            <div class="chips"><span>scikit-learn</span><span>t-SNE / UMAP</span></div>
+          </div>
+        </div>
       </section>
 
     </main>
   </div>
 
   <footer class="site-footer">
-    <small>© 2026 KyuTark Kim</small>
+    <small>© 2026 KyuTark Kim · <span class="mono">kyutark.github.io</span></small>
   </footer>
 
   <script src="script.js"></script>

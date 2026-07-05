@@ -1,396 +1,410 @@
-/* =========================================
-   1. 테마 변수 설정 (Theme Variables)
-   ========================================= */
-/* 1️⃣ 기본 상태 (라이트 모드) */
+/* =========================================================
+   KyuTark Kim — Researcher profile
+   Type : IBM Plex Serif (display) / Sans (body) / Mono (data)
+   Color: neutral paper + petrol-teal accent (molecular viewer)
+   ========================================================= */
+
+/* ---------- Theme tokens ---------- */
 :root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --border-color: #cccccc;
-  --footer-color: #666666;
-  --link-color: #0056b3; 
-  --h2-border-color: #dddddd;
-  --toggle-hover: rgba(0, 0, 0, 0.05);
-  --toggle-border: #cccccc;
-  --icon-filter: invert(1); /* 흰색 아이콘을 검은색으로 반전 */
+  --bg:        #FAFAF7;
+  --surface:   #FFFFFF;
+  --ink:       #1A1E24;
+  --muted:     #5C6672;
+  --faint:     #8A93A0;
+  --line:      #E6E5DF;
+  --accent:    #0E7C86;   /* petrol teal */
+  --accent-soft:#0E7C8618;
+  --chip-bg:   #0E7C860F;
+  --toggle-hover: rgba(0,0,0,.05);
+  --shadow:    0 1px 2px rgba(26,30,36,.05), 0 8px 24px rgba(26,30,36,.06);
 }
 
-/* 2️⃣ 사용자가 명시적으로 '라이트 모드'를 켰을 때 */
-html[data-theme="light"] {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --border-color: #cccccc;
-  --footer-color: #666666;
-  --link-color: #0056b3; 
-  --h2-border-color: #dddddd;
-  --toggle-hover: rgba(0, 0, 0, 0.05);
-  --toggle-border: #cccccc;
-  --icon-filter: invert(1); 
-}
-
-/* 3️⃣ 사용자가 명시적으로 '다크 모드'를 켰을 때 */
 html[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --border-color: #444444;
-  --footer-color: #aaaaaa;
-  --link-color: #90caf9;
-  --h2-border-color: #444444;
-  --toggle-hover: rgba(255, 255, 255, 0.1);
-  --toggle-border: #555555;
-  --icon-filter: none; /* 아이콘 원본(흰색) 유지 */
+  --bg:        #0F1419;
+  --surface:   #161C22;
+  --ink:       #E7E9EC;
+  --muted:     #97A1AD;
+  --faint:     #6B7682;
+  --line:      #26303A;
+  --accent:    #35C4CF;
+  --accent-soft:#35C4CF1F;
+  --chip-bg:   #35C4CF14;
+  --toggle-hover: rgba(255,255,255,.08);
+  --shadow:    0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
 }
 
-/* 4️⃣ OS 설정이 다크 모드일 때 (수동 조작 없을 때) */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --border-color: #444444;
-    --footer-color: #aaaaaa;
-    --link-color: #90caf9;
-    --h2-border-color: #444444;
-    --toggle-hover: rgba(255, 255, 255, 0.1);
-    --toggle-border: #555555;
-    --icon-filter: none; 
+    --bg:        #0F1419;
+    --surface:   #161C22;
+    --ink:       #E7E9EC;
+    --muted:     #97A1AD;
+    --faint:     #6B7682;
+    --line:      #26303A;
+    --accent:    #35C4CF;
+    --accent-soft:#35C4CF1F;
+    --chip-bg:   #35C4CF14;
+    --toggle-hover: rgba(255,255,255,.08);
+    --shadow:    0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
   }
 }
 
-/* =========================================
-   2. 기본 스타일 (Base) & 폰트 설정
-   ========================================= */
-* {
-  box-sizing: border-box;
-}
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  /* 전체 기본 폰트는 가독성 좋은 Noto Sans KR (이름, 소제목 모두 여기에 포함됨) */
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'IBM Plex Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .3s ease, color .3s ease;
 }
 
-a {
-  color: var(--link-color);
-  transition: color 0.3s ease;
-}
+a { color: var(--accent); text-decoration: none; }
 
-.custom-link {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 600;
-}
+.mono { font-family: 'IBM Plex Mono', monospace; }
 
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-  vertical-align: middle;
-  filter: var(--icon-filter);
-  transition: filter 0.3s ease;
-}
-
-/* =========================================
-   3. 레이아웃 (Layout)
-   ========================================= */
+/* ---------- Layout ---------- */
 .layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  padding-top: 40px; 
+  display: grid;
+  grid-template-columns: 268px 1fr;
+  gap: 56px;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 64px 40px 24px;
 }
 
-/* 사이드바 */
-.sidebar {
-  flex: 0 0 240px;
-  max-width: 300px;
-  padding-right: 20px;
-  border-right: 1px solid var(--border-color);
-  word-break: break-word;
+/* ---------- Sidebar ---------- */
+.sidebar { position: relative; }
+
+.sidebar-inner {
+  position: sticky;
+  top: 48px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: border-color 0.3s ease;
 }
 
 .avatar {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
-  margin-bottom: 20px;
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
 }
 
-.sidebar-info {
-  text-align: center;
+.identity h1 {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 600;
+  font-size: 1.72rem;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin: 0;
 }
 
-.sidebar-info h1 {
-  font-size: 1.8em;
-  margin: 0.5em 0 0.2em;
+.name-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin: 6px 0 0;
+  font-size: .98rem;
 }
 
-.role {
-  text-align: center;
-  font-size: 1.0em;        /* 모바일과 동일하게 1.1em으로 큼직하게 */
-  font-weight: 600;        /* 굵게 */
-  letter-spacing: 0.1em;   /* 자간을 넓혀서 당당한 느낌 */
-  margin-top: 5px;         /* 위쪽 영어 이름(KyuTark Kim)과 살짝 간격 띄우기 */
-  margin-bottom: 15px;     /* 아래쪽 연락처 정보와 간격 띄우기 */
-  opacity: 0.9;
+.tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 14px 0 0;
 }
 
-.contact-links {
-  list-style: none;
-  padding-left: 5px;
-  text-align: left;
+/* contact + cv */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 26px 0 20px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
 }
 
-.contact-links li {
-  margin-bottom: 8px;
-}
-
-/* =========================================
-   4. 테마 토글 버튼 (우측 상단 플로팅)
-   ========================================= */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  
-  width: 45px;
-  height: 45px;
+.contact a {
   display: flex;
   align-items: center;
+  gap: 11px;
+  color: var(--ink);
+  font-size: .92rem;
+  font-weight: 500;
+  padding: 7px 8px;
+  margin-left: -8px;
+  border-radius: 7px;
+  transition: color .18s ease, background-color .18s ease;
+}
+.contact a:hover { color: var(--accent); background: var(--accent-soft); }
+
+.ic { width: 17px; height: 17px; flex: 0 0 auto; }
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  
-  background-color: var(--bg-color); 
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
+  gap: 9px;
+  font-size: .86rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--surface);
+  background: var(--accent);
+  padding: 11px 14px;
+  border-radius: 9px;
+  transition: transform .18s ease, filter .18s ease;
+}
+html[data-theme="dark"] .cv-button { color: #0F1419; }
+.cv-button:hover { transform: translateY(-1px); filter: brightness(1.05); }
+.cv-button .ic { width: 16px; height: 16px; }
+
+/* ---------- Content ---------- */
+.content { min-width: 0; padding-top: 4px; }
+
+.content section { margin-bottom: 46px; }
+
+/* intro */
+.intro { margin-bottom: 52px; }
+
+.motto {
+  font-family: 'IBM Plex Serif', serif;
+  font-style: italic;
+  font-size: 1.34rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 22px;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent);
+}
+
+.about {
+  font-size: 1.02rem;
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: 58ch;
+}
+.about strong { color: var(--ink); font-weight: 600; }
+
+.interests {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+.interests li {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .74rem;
+  letter-spacing: .01em;
+  color: var(--accent);
+  background: var(--chip-bg);
+  border: 1px solid var(--accent-soft);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+/* section headings */
+h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+h2 .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .78rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--accent);
+}
+
+/* entries */
+.entries { list-style: none; margin: 0; padding: 0; }
+
+.entries li {
+  position: relative;
+  padding: 0 0 18px 18px;
+  margin-bottom: 4px;
+}
+.entries li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background .2s ease, transform .2s ease;
+}
+.entries li:hover::before { background: var(--accent); transform: scale(1.25); }
+
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+}
+.entry-title {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 500;
+  font-size: 1.04rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.entry-date {
+  flex: 0 0 auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .78rem;
+  color: var(--faint);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+.entry-sub {
+  display: block;
+  font-size: .9rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.entry-sub .doi { font-family: 'IBM Plex Mono', monospace; font-size: .82rem; color: var(--accent); }
+.entry-sub .doi:hover { text-decoration: underline; }
+
+/* skills */
+.skills { display: flex; flex-direction: column; gap: 16px; }
+.skill-group { display: grid; grid-template-columns: 130px 1fr; gap: 16px; align-items: start; }
+.skill-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .78rem;
+  color: var(--faint);
+  padding-top: 3px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chips span {
+  font-size: .82rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 4px 11px;
+  border-radius: 7px;
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 22px; right: 22px;
+  z-index: 1000;
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.3rem; 
-  
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 1.2rem;
+  box-shadow: var(--shadow);
+  transition: transform .25s cubic-bezier(.25,.8,.25,1), background-color .2s ease;
 }
+.theme-toggle:hover { background: var(--toggle-hover); transform: translateY(-2px) scale(1.05); }
 
-.theme-toggle:hover {
-  background-color: var(--toggle-hover);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .theme-toggle {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* =========================================
-   5. 메인 콘텐츠 (Content)
-   ========================================= */
-.content {
-  flex: 1 1 600px;
-  min-width: 0;
-  padding-left: 20px;
-}
-
-.content ul {
-  list-style: disc;
-  padding-left: 30px;
-  margin-bottom: 1em;
-}
-
-.content li {
-  margin-bottom: 10px;
-}
-
-.date {
-  float: right;
-  font-style: italic;
-}
-
-.sub-detail {
-  display: block;
-  margin-left: 1.5rem;
-  margin-top: 0.2rem;
-  color: inherit;
-  opacity: 0.8;
-}
-
-.spaced {
-  margin-bottom: 30px !important;
-}
-
-h2 {
-  margin-top: 1.5em;
-  font-size: 1.2em; /* Noto Sans에 맞춰 원래 크기로 복구 */
-  border-bottom: 1px solid var(--h2-border-color);
-  padding-bottom: 4px;
-  transition: border-color 0.3s ease;
-}
-
-/* =========================================
-   6. 특수 요소 디자인 (슬로건 & 링크)
-   ========================================= */
-/* About 섹션 슬로건 (오직 이 부분만 Lora 폰트 적용!) */
-.about-motto {
-  font-family: 'Lora', serif; 
-  text-align: center; 
-  margin: 2em 0;      
-  font-size: 1.15em;   
-  color: var(--text-color);
-}
-
-/* 깔끔한 논문/DOI 링크 */
-.clean-link {
-  color: inherit; 
-  text-decoration: none; 
-  transition: opacity 0.2s ease;
-}
-
-.clean-link:hover {
-  opacity: 0.6; 
-}
-
-/* =========================================
-   7. 푸터 (Footer)
-   ========================================= */
+/* ---------- Footer ---------- */
 .site-footer {
   text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  color: var(--footer-color);
-  border-top: 1px solid var(--border-color);
-  margin-top: 40px;
-  transition: color 0.3s ease, border-color 0.3s ease;
+  padding: 26px 20px 40px;
+  font-size: .82rem;
+  color: var(--faint);
+  border-top: 1px solid var(--line);
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.site-footer .mono { color: var(--muted); }
+
+/* ---------- Reveal on scroll ---------- */
+.content section { opacity: 1; }
+.js-reveal .content section {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.js-reveal .content section.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity .55s ease, transform .55s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js-reveal .content section { opacity: 1; transform: none; transition: none; }
+  .theme-toggle, .cv-button, .contact a, .entries li::before { transition: none; }
 }
 
-/* =========================================
-   8. 모바일 반응형 (Mobile) - 50:50 완벽 대칭 레이아웃
-   ========================================= */
-   @media (max-width: 768px) {
-    .layout {
-      gap: 16px;
-      padding: 16px;
-      padding-top: 60px;
-    }
-  
-    /* 사이드바 대칭 정렬: 좌우 여백을 없애고 100% 꽉 채운 후, 50:50 분할  */
-    .sidebar {
-      flex: 1 1 100%;
-      width: 100%;
-      display: grid;
-      grid-template-areas: 
-        "name name"
-        "motto motto"
-        "pic links";
-      /* 🌟 핵심: 화면을 정확히 1:1 (50% 50%) 비율로 나눕니다 */
-      grid-template-columns: 1fr 1fr; 
-      gap: 8px 0; /* 가로 간격(0)은 각 셀 내부에서 조절합니다 */
-      align-items: center;
-      border: none;
-      padding: 0; /* 왼쪽 쏠림 방지를 위해 패딩 초기화 */
-      margin: 0 auto 20px auto; 
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--border-color); /* 완벽히 중앙 정렬된 구분선 */
-    }
-  
-    .sidebar-info {
-      display: contents; 
-    }
-  
-    /* 이름과 모토: 2칸(name name)을 다 차지하며 정중앙에 위치 */
-    .sidebar-info h1 {
-      grid-area: name;
-      margin: 0;
-      text-align: center;
-      font-size: 1.7em;
-    }
-  
-    /* 한글 이름(기존 .role) 스타일 조정 */
-    .role {
-      grid-area: motto;
-      margin: 0 0 15px 0;
-      text-align: center;
-      font-size: 1.0em;      /* 이름을 강조하기 위해 기존 0.85em에서 키움 */
-      font-weight: 600;      /* 성함이니만큼 조금 더 진하게 */
-      letter-spacing: 0.1em; /* 한글은 자간을 살짝 주면 더 고급스럽습니다 */
-      opacity: 0.9;
-    }
-  
-    /* 좌측 50% 블록: 사진을 블록 내부의 '정중앙'에 배치 */
-    .avatar {
-      grid-area: pic;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto; /* 좌우 여백을 동일하게 주어 중앙 정렬 */
-      display: block;
-    }
-  
-    /* 우측 50% 블록: 정보를 블록 내부의 '왼쪽'에 배치 */
-    .contact-links {
-      grid-area: links;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-      justify-self: start; /* 해당 50% 칸 안에서 왼쪽 끝으로 밀착 */
-      padding-left: 10px; /* 정중앙 선에 너무 딱 붙지 않게 살짝 여백 줌 */
-    }
-  
-    .contact-links li {
-      margin: 0;
-      font-size: 0.85em;
-    }
-  
-    /* 모바일 공통 요소 최적화 */
-    .theme-toggle {
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-    }
-  
-    .content {
-      flex-basis: 100%;
-      padding-left: 0;
-    }
-  
-    .date {
-      float: none !important;
-      display: block;
-      text-align: left;
-      margin-top: 2px;
-      margin-bottom: 8px;
-      font-size: 0.85em;
-      opacity: 0.8;
-    }
-  
-    .content li {
-      margin-bottom: 20px;
-      list-style-position: inside;
-    }
+/* ---------- Focus ---------- */
+a:focus-visible, .theme-toggle:focus-visible, .cv-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
-    /* 영문 모토 모바일 전용 크기 조정*/
-    .about-motto {
-      font-size: 0.95em;   /* 기본 1.15em에서 살짝 줄임 */
-      line-height: 1.4;    /* 줄간격도 모바일에 맞게 살짝 타이트하게 */
-      text-align: center;
-      padding: 0 10px;
-      word-break: keep-all;
-      margin-top: 0.5em;    /* 위쪽 구분선과의 거리를 좁힘 */
-      margin-bottom: 2.5em; /* 아래쪽 소제목과의 거리를 넉넉하게 확보 */
-    }
-  
-    h2 {
-      margin-top: 1.5em;
-    }
+/* =========================================================
+   Mobile
+   ========================================================= */
+@media (max-width: 780px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 56px 22px 16px;
   }
+
+  .sidebar-inner {
+    position: static;
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    grid-template-areas:
+      "pic  id"
+      "nav  nav"
+      "cv   cv";
+    gap: 18px 20px;
+    align-items: center;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .avatar { grid-area: pic; width: 112px; height: 112px; margin: 0; }
+  .identity { grid-area: id; }
+  .identity h1 { font-size: 1.5rem; }
+  .tagline { margin-top: 8px; }
+
+  .contact {
+    grid-area: nav;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin: 0;
+    padding-top: 18px;
+  }
+  .cv-button { grid-area: cv; }
+
+  .motto { font-size: 1.16rem; }
+  .about { font-size: .98rem; }
+
+  .entry-head { flex-direction: column; gap: 2px; }
+  .entry-date { padding-top: 0; }
+
+  .skill-group { grid-template-columns: 1fr; gap: 7px; }
+
+  .theme-toggle { top: 16px; right: 16px; width: 38px; height: 38px; }
+}
